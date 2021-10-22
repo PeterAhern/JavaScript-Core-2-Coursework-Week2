@@ -1,11 +1,12 @@
-let jumbotron = document.getElementsByClassName("jumbotron");
+let jumbotron = document.querySelector(".jumbotron");
 let blueBtn = document.getElementById("blueBtn");
 let orangeBtn = document.getElementById("orangeBtn");
 let greenBtn = document.getElementById("greenBtn");
-let donateBikeBtn = document.getElementsByClassName("btn btn-primary btn-lrg");
-let volunteerBtn = document.getElementsByClassName("btn btn-secondary btn-lrg");
+let donateBikeBtn = document.querySelector(".buttons > .btn-primary");
+let volunteerBtn = document.querySelector(".buttons > .btn-secondary");
 
-//event listener for blue button
+//Part 1
+//event listeners for colour buttons
 
 blueBtn.addEventListener("click", () => {
   jumbotron.style.backgroundColor = `#588fbd`;
@@ -26,3 +27,31 @@ greenBtn.addEventListener("click", () => {
   donateBikeBtn.style.backgroundColor = `black`;
   volunteerBtn.style.backgroundColor = "#8c9c08";
 });
+
+//Part 2
+
+let submitBtn = document.querySelector("form button");
+let emailInput = document.querySelector("#exampleInputEmail");
+let yourNameInput = document.querySelector("#example-text-input");
+let descriptionInput = document.querySelector("#exampleTextarea");
+
+submitBtn.addEventListener("click", submitButton);
+
+//function for actions when clicking submit button
+function submitButton(event) {
+  event.preventDefault();
+  if (emailInput.value.length === 0 || !emailInput.value.includes("@")) {
+    emailInput.style.backgroundColor = "red";
+  }
+  if (yourNameInput.value.length === 0) {
+    yourNameInput.style.backgroundColor = "red";
+  }
+  if (descriptionInput.value.length === 0) {
+    descriptionInput.style.backgroundColor = "red";
+  } else {
+    alert("Thankyou very kindly for filling out this form");
+    yourNameInput.value = "";
+    emailInput.value = "";
+    descriptionInput.value = "";
+  }
+}
